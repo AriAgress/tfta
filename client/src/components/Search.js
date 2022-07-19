@@ -1,0 +1,39 @@
+// import { app } from "express";
+import React, { useState } from "react";
+import axios from "axios";
+import "./searchBarStyles.css";
+
+const SearchBar = () => {
+  const [search, setSearch] = useState("");
+
+  const onChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const onSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      const result = await axios.get(
+        `http://localhost:8000/api?body=${search}`
+      );
+      setSearch(result);
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return (
+    <div className="input-group">
+      <input
+        type="text"
+        placeholder="Search"
+        className="input"
+        onChange={onChange}
+      />
+      <button onClick={onSubmit} />
+    </div>
+  );
+};
+
+export default SearchBar;

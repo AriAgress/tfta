@@ -1,20 +1,20 @@
-import axios from "axios";
-import { useEffect } from "react";
+import React from "react";
 import "./App.css";
+import Home from "./pages/Home";
 
 function App() {
-  const getData = async () => {
-    try {
-      const result = await axios.get("http://localhost:8000/api");
-      console.log(result.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const getData = async () => {
+  //   try {
+  //     const result = await axios.get("http://localhost:8000/api");
+  //     console.log(result.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  useEffect(() => {
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   getData();
+  // }, []);
 
   // useEffect(() => {
   //   axios
@@ -27,7 +27,11 @@ function App() {
   //     .then((res) => console.log(res.data));
   // }, []);
 
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <Home />
+    </div>
+  );
 }
 
 export default App;
