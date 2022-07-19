@@ -3,18 +3,18 @@ import { useEffect } from "react";
 import "./App.css";
 
 function App() {
-  const getData = async () => {
-    try {
-      const result = await axios.get("http://localhost:8000/api");
-      console.log(result.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const getData = async () => {
+  //   try {
+  //     const result = await axios.get("http://localhost:8000/api");
+  //     console.log(result.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  useEffect(() => {
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   getData();
+  // }, []);
 
   // useEffect(() => {
   //   axios
@@ -27,7 +27,11 @@ function App() {
   //     .then((res) => console.log(res.data));
   // }, []);
 
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <h1 className="text-3xl font-bold underline">hello</h1>
+    </div>
+  );
 }
 
 export default App;
