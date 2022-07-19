@@ -21,8 +21,6 @@ app.get("/api", async (req, res) => {
   }
 })
 
-
-
 // app.get("/api", async (req, res) => {
 //   try {
 //     const result = await axios.get("https://fakestoreapi.com/products");
