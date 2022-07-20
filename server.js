@@ -13,36 +13,29 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/api", async (req, res) => {
   try {
     const summonerName = req.query.body;
-    console.log("Summoner Name", req.query.body);
     const result = await axios.get(
       `https://na1.api.riotgames.com/tft/summoner/v1/summoners/by-name/${summonerName}?api_key=${API_KEY}`
     );
-    return res.json(result.data);
+    const puuid = result.data.puuid;
+    const matchData = await axios.get(
+      `https://americas.api.riotgames.com/tft/match/v1/matches/by-puuid/${puuid}/ids?start=0&count=10&api_key=${API_KEY}`
+    );
+
+    let matchHistory = [];
+    for (let index = 0; index < matchData.data.length; index++) {
+      const matchId = matchData.data[index];
+      const matchLogs = await axios.get(
+        `https://americas.api.riotgames.com/tft/match/v1/matches/${matchId}?api_key=${API_KEY}`
+      );
+      matchHistory.push(matchLogs.data);
+    }
+    // console.log("Chicken Satay", matchHistory);
+    const data = { user: result.data, matchHistory: matchHistory };
+    return res.json(data);
   } catch (error) {
     console.log(error);
   }
 });
-
-// app.get("/api", async (req, res) => {
-//   try {
-//     const result = await axios.get("https://fakestoreapi.com/products");
-//     return res.json(result.data);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
-
-// app.get("/query", (req, res) => {
-//   req.query.title = "PM Frank";
-//   console.log(req.query);
-//   res.send("quack quack");
-// });
-
-// app.post("/api", (req, res) => {
-//   req.body.title = "Drop";
-//   console.log(req.body);
-//   res.send("Suxxess");
-// });
 
 app.listen(PORT, () => {
   console.log(`listen at http://localhost:${PORT}`);

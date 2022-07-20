@@ -16,8 +16,8 @@ const SearchBar = () => {
       const result = await axios.get(
         `http://localhost:8000/api?body=${search}`
       );
-      setSearch(result);
-      console.log(result);
+      setSearch(result.data);
+      console.log(result.data);
     } catch (error) {
       console.log(error);
     }
