@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchBar from "../components/Search";
 
 const Home = () => {
+  const [data, setData] = useState([]);
+
   return (
     <div>
-      <SearchBar />
+      <SearchBar setData={setData} />
+      {data.user.name}
     </div>
   );
 };
