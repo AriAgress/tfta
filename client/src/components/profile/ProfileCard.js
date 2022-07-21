@@ -4,7 +4,13 @@ import "./profileCard.css";
 const ProfileCard = ({ data }) => {
   return (
     <div className="card-wrapper">
-      <div>{data.user.name}</div>
+      <div>
+        {data.user.name}
+        {data.user.summonerLevel}
+        Rank: {data.userStats[0].tier}
+        {data.userStats[0].rank}
+        wins: {data.userStats[0].wins}
+      </div>
     </div>
   );
 };
