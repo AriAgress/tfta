@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./searchBarStyles.css";
 
-const SearchBar = ({ setData }) => {
+const SearchBar = ({ setData, setCard }) => {
   const [search, setSearch] = useState("");
 
   const onChange = (e) => {
@@ -18,6 +18,7 @@ const SearchBar = ({ setData }) => {
       );
       setSearch(result.data);
       setData(result.data);
+      setCard(true);
       console.log(result.data);
     } catch (error) {
       console.log(error);
