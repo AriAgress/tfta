@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./searchBarStyles.css";
 
-const SearchBar = () => {
+const SearchBar = ({ setData }) => {
   const [search, setSearch] = useState("");
 
   const onChange = (e) => {
@@ -17,6 +17,7 @@ const SearchBar = () => {
         `http://localhost:8000/api?body=${search}`
       );
       setSearch(result.data);
+      setData(result.data);
       console.log(result.data);
     } catch (error) {
       console.log(error);
