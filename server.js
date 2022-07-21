@@ -16,6 +16,13 @@ app.get("/api", async (req, res) => {
     const result = await axios.get(
       `https://na1.api.riotgames.com/tft/summoner/v1/summoners/by-name/${summonerName}?api_key=${API_KEY}`
     );
+
+    const summonerStats = result.data.id;
+    const stats = await axios.get(
+      `https://na1.api.riotgames.com/tft/league/v1/entries/by-summoner/${summonerStats}?api_key=${API_KEY}`
+    );
+    // console.log("Chicken Satay", stats.data);
+
     const puuid = result.data.puuid;
     const matchData = await axios.get(
       `https://americas.api.riotgames.com/tft/match/v1/matches/by-puuid/${puuid}/ids?start=0&count=10&api_key=${API_KEY}`
@@ -30,7 +37,11 @@ app.get("/api", async (req, res) => {
       matchHistory.push(matchLogs.data);
     }
     // console.log("Chicken Satay", matchHistory);
-    const data = { user: result.data, matchHistory: matchHistory };
+    const data = {
+      user: result.data,
+      userStats: stats.data,
+      matchHistory: matchHistory,
+    };
     return res.json(data);
   } catch (error) {
     console.log(error);
