@@ -1,13 +1,16 @@
 import React from "react";
+import { unix_timestamp } from "../../utils/utils";
 
 const MatchHistory = ({ data }) => {
+  console.log(data.puuid);
+
   return (
     <div>
       <div>
         {data.matchHistory?.map((placement, i) => (
           <div key={i}>
-            Date: {placement.info.game_datetime}
-            Game Length: {placement.info.game_length / 60} min
+            Date: {unix_timestamp(placement.info.game_datetime)}
+            Game Length: {Math.round(placement.info.game_length / 60, 2)} min
           </div>
         ))}
       </div>
