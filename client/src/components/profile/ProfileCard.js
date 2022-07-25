@@ -1,7 +1,7 @@
 import React from "react";
 import "./profileCard.css";
 
-const ProfileCard = ({ data }) => {
+const ProfileCard = ({ data, averagePlace }) => {
   return (
     <div className="card-wrapper">
       <div className="profile-container">
@@ -16,7 +16,8 @@ const ProfileCard = ({ data }) => {
       <div>
         Ranked Rank: {data.userStats[0].tier}
         {data.userStats[0].rank}
-        wins: {data.userStats[0].wins}
+        Wins: {data.userStats[0].wins}
+        {averagePlace}
       </div>
     </div>
   );
