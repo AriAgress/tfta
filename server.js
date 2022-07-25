@@ -25,7 +25,7 @@ app.get("/api", async (req, res) => {
 
     const puuid = result.data.puuid;
     const matchData = await axios.get(
-      `https://americas.api.riotgames.com/tft/match/v1/matches/by-puuid/${puuid}/ids?start=0&count=10&api_key=${API_KEY}`
+      `https://americas.api.riotgames.com/tft/match/v1/matches/by-puuid/${puuid}/ids?start=0&count=5&api_key=${API_KEY}`
     );
 
     let matchHistory = [];
@@ -35,13 +35,15 @@ app.get("/api", async (req, res) => {
         `https://americas.api.riotgames.com/tft/match/v1/matches/${matchId}?api_key=${API_KEY}`
       );
       matchHistory.push(matchLogs.data);
-      // const userHistory = `(matchHistory.info.participants.${puuid}.placement)`;
+
       // console.log("Chicken Satay", matchHistory);
     }
+
     const data = {
       user: result.data,
       userStats: stats.data,
       matchHistory: matchHistory,
+      puuid: puuid,
     };
     return res.json(data);
   } catch (error) {
