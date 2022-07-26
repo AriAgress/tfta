@@ -1,13 +1,47 @@
-.input-group {
+#input-group {
   margin-top: 100px;
   margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
 }
 
-.input {
-  height: 20px;
+#input-group:hover {
+  box-shadow: 0 1px 6px rgb(32 33 36 / 28%);
+  border-color: rgba(223, 225, 229, 0);
+  border-radius: 30px;
+}
+
+#input {
+  font-family: inherit;
+  font-size: inherit;
+  background-color: #f4f2f2;
+  border: none;
+  color: #646464;
+  padding: 0.7rem 1rem;
+  border-radius: 30px;
+  width: 12em;
+  transition: all ease-in-out 0.5s;
+  margin-right: -2rem;
+}
+
+#input:hover,
+#input:focus {
+  box-shadow: 0 0 1em #00000013;
+}
+
+#input:focus {
+  outline: none;
+  background-color: #f0eeee;
 }
 
 button {
-  height: 20px;
-  margin-left: 40px;
+  border: none;
+  background-color: #f4f2f2;
+  margin-top: 0.1em;
+}
+
+button:hover {
+  cursor: pointer;
 }

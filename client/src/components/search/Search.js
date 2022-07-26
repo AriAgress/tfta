@@ -1,7 +1,7 @@
-// import { app } from "express";
 import React, { useState } from "react";
 import axios from "axios";
 import "./searchBarStyles.css";
+import { BsSearch } from "react-icons/bs";
 
 const SearchBar = ({ setData, setCard }) => {
   const [search, setSearch] = useState("");
@@ -26,14 +26,11 @@ const SearchBar = ({ setData, setCard }) => {
   };
 
   return (
-    <div className="input-group">
-      <input
-        type="text"
-        placeholder="Search"
-        className="input"
-        onChange={onChange}
-      />
-      <button onClick={onSubmit} />
+    <div id="input-group">
+      <input type="text" placeholder="Search" id="input" onChange={onChange} />
+      <button onClick={onSubmit} id="searchbar-icon">
+        <BsSearch />
+      </button>
     </div>
   );
 };
