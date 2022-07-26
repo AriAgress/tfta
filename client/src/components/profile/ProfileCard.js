@@ -13,11 +13,19 @@ const ProfileCard = ({ data, averagePlace }) => {
           <div>Summoner Level: {data.user.summonerLevel}</div>
         </div>
       </div>
-      <div>
-        Ranked Rank: {data.userStats[0].tier}
-        {data.userStats[0].rank}
-        Wins: {data.userStats[0].wins}
-        {averagePlace}
+      <div className="profile-body">
+        <div className="user-stats" id="">
+          Rank:
+          <br />
+          {data.userStats[0].tier} {data.userStats[0].rank}
+        </div>
+        <div className="user-placement" id="">
+          Average placement in last 6 games
+          <br />
+          {averagePlace}
+          <br />
+          Wins: {data.userStats[0].wins}
+        </div>
       </div>
     </div>
   );
