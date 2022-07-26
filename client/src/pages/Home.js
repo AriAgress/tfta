@@ -56,18 +56,24 @@ const Home = () => {
   }, [data]);
 
   return (
-    <div className="body-wrapper">
-      <SearchBar setData={setData} setCard={setCard} />
-      {card === true ? (
-        <ProfileCard
-          data={data}
-          averagePlace={averagePlace}
-          averageEliminated={averageEliminated}
-        />
-      ) : null}
-      {card === true ? (
-        <MatchHistory data={data} matchData={matchData} />
-      ) : null}
+    <div id="bg-img">
+      <div className="body-wrapper">
+        <SearchBar setData={setData} setCard={setCard} />
+        {card === true ? (
+          <ProfileCard
+            data={data}
+            averagePlace={averagePlace}
+            averageEliminated={averageEliminated}
+          />
+        ) : null}
+        {card === true ? (
+          <MatchHistory
+            data={data}
+            matchData={matchData}
+            gameLength={gameLength}
+          />
+        ) : null}
+      </div>
     </div>
   );
 };
