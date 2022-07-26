@@ -26,3 +26,20 @@
   margin: 1rem 0rem;
   line-height: 2rem;
 }
+
+.profile-body {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.user-stats {
+  line-height: 2rem;
+  text-align: center;
+}
+
+.user-placement {
+  line-height: 2rem;
+  text-align: center;
+}
