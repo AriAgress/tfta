@@ -1,0 +1,15 @@
+.hist-wrapper {
+  border: 3px solid limegreen;
+  width: min(100% - 2rem, 960px);
+  display: flex;
+  margin-top: 25px;
+}
+
+.hist-body {
+  border: 3px solid red;
+  padding: 1rem;
+  display: flex;
+  flex-flow: column;
+  align-content: center;
+  justify-content: center;
+}
