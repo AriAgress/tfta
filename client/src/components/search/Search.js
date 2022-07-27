@@ -3,7 +3,7 @@ import axios from "axios";
 import "./searchBarStyles.css";
 import { BsSearch } from "react-icons/bs";
 
-const SearchBar = ({ setData, setCard }) => {
+const SearchBar = ({ setData, setCard, setLoadTime }) => {
   const [search, setSearch] = useState("");
 
   const onChange = (e) => {
@@ -13,12 +13,14 @@ const SearchBar = ({ setData, setCard }) => {
   const onSubmit = async (e) => {
     try {
       e.preventDefault();
+      setLoadTime(false);
       const result = await axios.get(
         `http://localhost:8000/api?body=${search}`
       );
       setSearch(result.data);
       setData(result.data);
       setCard(true);
+      setLoadTime(true);
       console.log(result.data);
     } catch (error) {
       console.log(error);

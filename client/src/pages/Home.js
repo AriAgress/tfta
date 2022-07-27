@@ -3,8 +3,10 @@ import "./home.css";
 import SearchBar from "../components/search/Search";
 import ProfileCard from "../components/profile/ProfileCard";
 import MatchHistory from "../components/match/MatchHistory";
+import Loading from "../components/loading/Loading";
 
 const Home = () => {
+  const [loadTime, setLoadTime] = useState(true);
   const [data, setData] = useState([]);
   const [card, setCard] = useState(false);
   const [matchData, setMatchData] = useState([]);
@@ -58,21 +60,31 @@ const Home = () => {
   return (
     <div id="bg-img">
       <div className="body-wrapper">
-        <SearchBar setData={setData} setCard={setCard} />
-        {card === true ? (
-          <ProfileCard
-            data={data}
-            averagePlace={averagePlace}
-            averageEliminated={averageEliminated}
-          />
-        ) : null}
-        {card === true ? (
-          <MatchHistory
-            data={data}
-            matchData={matchData}
-            gameLength={gameLength}
-          />
-        ) : null}
+        <SearchBar
+          setData={setData}
+          setCard={setCard}
+          setLoadTime={setLoadTime}
+        />
+        {loadTime === false ? (
+          <Loading />
+        ) : (
+          <div>
+            {card === true ? (
+              <ProfileCard
+                data={data}
+                averagePlace={averagePlace}
+                averageEliminated={averageEliminated}
+              />
+            ) : null}
+            {card === true ? (
+              <MatchHistory
+                data={data}
+                matchData={matchData}
+                gameLength={gameLength}
+              />
+            ) : null}
+          </div>
+        )}
       </div>
     </div>
   );
