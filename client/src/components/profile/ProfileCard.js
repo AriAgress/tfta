@@ -17,24 +17,23 @@ const ProfileCard = ({ data, averagePlace, averageEliminated }) => {
         <div className="user-stats" id="">
           Rank:
           <br />
-          {data.userStats[0].tier}
+          {data.userStats[0]?.tier}
           <br />
-          {data.userStats[0].rank}
+          {data.userStats[0]?.rank}
         </div>
         <div className="user-stats" id="">
           Average Placement:
           <br />
           {averagePlace}
           <br />
-          Wins: {data.userStats[0].wins}
+          Wins: {data.userStats[0]?.wins}
         </div>
         <div className="user-stats" id="">
           Average Game Time:
           <br />
           {Math.round(averageEliminated / 60, 2)} min
           <br />
-          Losses:
-          {data.userStats[0].losses}
+          Losses: {data.userStats[0]?.losses}
         </div>
       </div>
     </div>
