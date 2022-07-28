@@ -1,8 +1,9 @@
 .card-wrapper {
   width: min(100% - 2rem, 960px);
+  margin-inline: auto;
   display: flex;
   color: white;
-  background: rgba(74, 74, 74, 0.7);
+  background: rgba(4, 4, 4, 0.7);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(11px);
   -webkit-backdrop-filter: blur(11px);
@@ -18,10 +19,14 @@
 }
 
 .profile-img {
-  border: 3px solid blue;
-  width: 8rem;
-  height: 8rem;
+  width: 7rem;
+  height: 7rem;
   margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  color: red;
 }
 
 .user {
@@ -41,6 +46,14 @@
 }
 
 .user-stats {
-  line-height: 2rem;
+  height: 200px;
   text-align: center;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.tier {
+  font-size: 2rem;
 }

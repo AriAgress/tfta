@@ -3,13 +3,35 @@ import { unix_timestamp } from "../../utils/utils";
 import "./matchHistory.css";
 
 const MatchHistory = ({ data, matchData, gameLength }) => {
+  const goldStyles = {
+    color: "gold",
+  };
+
+  const greenStyles = {
+    color: "green",
+  };
+
+  const redStyles = {
+    color: "red",
+  };
+
   return (
     <div className="hist-wrapper">
       {data.matchHistory.map((placement, i) => (
         <div className="hist-body" key={i}>
           Placement:
           <br />
-          {matchData[i]?.placement}
+          <div
+            id="placement"
+            style={
+              matchData[i]?.placement === 1
+                ? goldStyles
+                : matchData[i]?.placement <= 4
+                ? greenStyles
+                : redStyles
+            }>
+            {matchData[i]?.placement}
+          </div>
           <br />
           {matchData[i]?.companion.species}
           <br />
