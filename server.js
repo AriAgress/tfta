@@ -25,7 +25,7 @@ app.get("/api", async (req, res) => {
 
     const puuid = result.data.puuid;
     const matchData = await axios.get(
-      `https://americas.api.riotgames.com/tft/match/v1/matches/by-puuid/${puuid}/ids?start=0&count=5&api_key=${API_KEY}`
+      `https://americas.api.riotgames.com/tft/match/v1/matches/by-puuid/${puuid}/ids?start=0&count=10&api_key=${API_KEY}`
     );
 
     let matchHistory = [];
